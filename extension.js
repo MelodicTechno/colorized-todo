@@ -44,23 +44,20 @@ function activate(context) {
             }
         }
 
-        // 在注释中查找TODO
+        // 在注释中查找 TODO，并高亮整段包含 TODO 的注释
         commentRanges.forEach(range => {
             const commentText = editor.document.getText(range);
-            let match;
-            while ((match = todoRegex.exec(commentText)) !== null) {
-                const startPos = editor.document.positionAt(
-                    editor.document.offsetAt(range.start) + match.index
-                );
-                const endPos = editor.document.positionAt(
-                    editor.document.offsetAt(range.start) + match.index + match[0].length
-                );
-                
+            
+            // 如果该注释中包含 TODO，则整段注释都应用装饰
+            if (todoRegex.test(commentText)) {
                 decorations.push({
-                    range: new vscode.Range(startPos, endPos),
+                    range,
                     hoverMessage: 'TODO 待办事项'
                 });
             }
+            
+            // 重置正则的 lastIndex，避免全局匹配带来的状态问题
+            todoRegex.lastIndex = 0;
         });
 
         editor.setDecorations(todoDecorationType, decorations);
