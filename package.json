@@ -4,8 +4,12 @@
   "displayName": "ColorizedTODO",
   "description": "将注释中的TODO渲染成低饱和度的紫色",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MelodicTechno/colorized-todo.git"
+  },
   "engines": {
-    "vscode": "^1.74.0"
+    "vscode": "^1.108.0"
   },
   "categories": [
     "Other"
