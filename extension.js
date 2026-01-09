@@ -52,7 +52,7 @@ function activate(context) {
             if (todoRegex.test(commentText)) {
                 decorations.push({
                     range,
-                    hoverMessage: 'TODO 待办事项'
+                    hoverMessage: 'TODO'
                 });
             }
             
