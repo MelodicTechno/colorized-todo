@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/@types/vscode/package.json",
+  "name": "colorized-todo",
+  "displayName": "ColorizedTODO",
+  "description": "将注释中的TODO渲染成低饱和度的紫色",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "ColorizedTODO",
+      "properties": {
+        "colorizedTodo.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用TODO高亮"
+        },
+        "colorizedTodo.color": {
+          "type": "string",
+          "default": "#9370DB",
+          "description": "TODO的颜色 (低饱和度紫色)"
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "@types/vscode": "^1.108.0"
+  }
+}
